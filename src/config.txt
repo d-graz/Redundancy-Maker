@@ -1,0 +1,4 @@
+target_directory: directory_name
+mirror_directory: directory_name
+cpu_treshold: number
+low_load_period: number-number
