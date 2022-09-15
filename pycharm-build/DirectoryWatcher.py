@@ -1,6 +1,6 @@
 import subprocess
 import threading
-import Timer
+import time
 
 class DirectoryWatcher:
 
@@ -8,21 +8,20 @@ class DirectoryWatcher:
         self.dir = dir
         self.pending_files = []
         self.lock = threading.Lock()
-        self.timer = Timer(10)
-        self.thread = threading.Thread(target=self.timer.start())
+        self.time =  time.perf_counter()
 
     def watch(self):
-        self.thread.start()
-        cmd_output = subprocess.run(["inotifywait", "-r", "-e", "modify,move,create,delete", "-q", "--format", "%f", self.dir], stdout=subprocess.PIPE, text=True)
-        self.thread.join()
-        cmd_raw_output = cmd_output.stdout
-        cmd_output = ""
-        for i in range(len(cmd_raw_output)-1):
-            cmd_output = cmd_output + cmd_raw_output[i]
-        self.lock.acquire()
-        if cmd_output not in self.pending_files:
-            self.pending_files.append(cmd_output)
-        self.lock.release()
+        while True:
+            cmd_output = subprocess.run(["inotifywait", "-r", "-e", "modify,move,create,delete", "-q", "--format", "%f", self.dir], stdout=subprocess.PIPE, text=True)
+            cmd_raw_output = cmd_output.stdout
+            cmd_output = ""
+            for i in range(len(cmd_raw_output)-1):
+                cmd_output = cmd_output + cmd_raw_output[i]
+            self.lock.acquire()
+            self.time =  time.perf_counter()
+            if cmd_output not in self.pending_files:
+                self.pending_files.append(cmd_output)
+            self.lock.release()
 
     def getPendingFiles(self):
         self.lock.acquire()
@@ -37,4 +36,15 @@ class DirectoryWatcher:
         self.lock.release()
 
     def getElapsedTime(self):
-        return self.timer.isFinished()
+        time = time.perf_counter() - self.time
+        return time
+
+watcher = DirectoryWatcher("/home/davide/git")
+thread = threading.Thread(target = watcher.watch())
+sleep(5)
+print("Time dall'ultima modifica" + watcher.getElapsedTime())
+sleep(25)
+
+        
+
+    
