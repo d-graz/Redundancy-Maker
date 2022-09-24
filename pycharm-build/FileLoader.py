@@ -19,22 +19,32 @@ class FileLoader:
         for line in processed_lines:
             if line[0] == "target_directory":
                 self.trg_dir = line[1]
+                print("")
             elif line[0] == "mirror_directory":
                 self.mrr_dir = line[1]
+                print("")
             elif line[0] == "cpu_threshold":
                 self.cpu = int(line[1])
+                print("")
             elif line[0] == "cpu_await_time":
                 self.cpu_await_time = int(line[1])
+                print("")
             elif line[0] == "cpu_scan":
                 self.cpu_scan = int(line[1])
+                print("")
             elif line[0] == "cpu_scan_frequency":
                 self.cpu_scan_freq = int(line[1])
+                print("")
             elif line[0] == "low_load_period":
                 hours = line[1].split("-")
                 self.h0 = int(hours[0])
                 self.h1 = int(hours[1])
+                print("")
             elif line[0] == "fs_watch_timeout":
                 self.fs_wt = int(line[1])
+                print("")
+            #todo aggiungere linea per il controllo dei commenti e per la linea bianca
+            #aggiungere linea di warning per i comandi non riconsciuti
             else:
                 pass # todo handle config file error
         config_file.close()
