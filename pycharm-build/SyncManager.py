@@ -16,13 +16,13 @@ def copy(file_name, trg_dir, mrr_dir):
 
 
 def sync(not_synch_files, fileManager):
-    while psutil.cpu_percent(fileManager.cpu_scan*60) > fileManager.cpu:
+    while psutil.cpu_percent(fileManager.cpu_scan_time*60) > fileManager.cpu_load:
         time.sleep(fileManager.cpu_await_time)
     last_check = time.perf_counter()
     for file in not_synch_files:
         ct = time.perf_counter()
-        if ct - last_check > fileManager.cpu_scan_freq:
-            while psutil.cpu_percent(fileManager.cpu_scan * 6) > fileManager.cpu:
+        if ct - last_check > fileManager.cpu_rescan_time:
+            while psutil.cpu_percent(fileManager.cpu_scan_time * 6) > fileManager.cpu_load:
                 time.sleep(fileManager.cpu_await_time)
             last_check = time.perf_counter()
         copy(file, fileManager.trg_dir, fileManager.mrr_dir)

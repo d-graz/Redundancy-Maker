@@ -1,5 +1,6 @@
 target_directory: /home/davide/git/Redundancy-Maker/test/td
 mirror_directory: /home/davide/git/Redundancy-Maker/test/md
 cpu_await_time: 1
-cpu_scan: 1
-cpu_scan_frequency: 1
+cpu_scan_time: 1
+cpu_rescan_time: 1
+filesystem_watch_timeout: 1
