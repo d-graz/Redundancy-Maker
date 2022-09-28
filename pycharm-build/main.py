@@ -13,5 +13,16 @@ thread.start()
 print("Redundancy maker is up and runnig")
 while True:
     while not dW.isFileTailed():
+        #print("DEBUG")
+        print("No file was tailed...going to sleep for "+str(flMngr.fs_wt*60)+ " seconds")
+        #print("DEBUG-ENDS")
         time.sleep(flMngr.fs_wt*60)
-    sync.sync(dW.getPendingFiles(), flMngr)
+    ## BUGGGG FIX continuos iterations
+    if dW.getElapsedTime() > flMngr.fs_wt*60:
+        #print("DEBUG")
+        print("Coping files")
+        #print("DEBUG-ENDS")
+        sync.sync(dW.getPendingFiles(), flMngr)
+        #print("DEBUG")
+        print("Files copied")
+        #print("DEBUG-ENDS")

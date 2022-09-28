@@ -3,13 +3,12 @@ import sys
 class FileLoader:
 
     def __init__(self):
-        self.trg_dir = ""
-        self.mrr_dir = ""
-        self.cpu_load = 60
-        self.cpu_await_time = 10
-        self.cpu_scan_time = 10
-        self.cpu_rescan_time = 15
-        self.fs_wt = 15
+        self.trg_dir = ""            ## target directory -> BUGGGG aggiungere / alla fine della stringa
+        self.mrr_dir = ""            ## mirror directory -> BUGGGG aggiungere / alla fine della stringa
+        self.cpu_load = 60           ## maximum accepted load on cpu
+        self.cpu_scan_time = 10      ## cpu probing time
+        self.cpu_rescan_time = 15    ## time for recheck sistem
+        self.fs_wt = 15              ## filesistem watch time
         self.h0 = 0
         self.h1 = 4
         config_file = open("config.txt")
@@ -29,9 +28,6 @@ class FileLoader:
             elif line[0] == "cpu_load_threshold":
                 self.cpu_load = int(line[1])
                 print("Correctly loaded cpu load threshold")
-            elif line[0] == "cpu_await_time":
-                self.cpu_await_time = int(line[1])
-                print("Correctly loaded cpu await time")
             elif line[0] == "cpu_scan_time":
                 self.cpu_scan_time = int(line[1])
                 print("Correctly loaded cpu scan time")
