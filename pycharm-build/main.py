@@ -17,7 +17,6 @@ while True:
         print("No file was tailed...going to sleep for "+str(flMngr.fs_wt*60)+ " seconds")
         #print("DEBUG-ENDS")
         time.sleep(flMngr.fs_wt*60)
-    ## BUGGGG FIX continuos iterations
     if dW.getElapsedTime() > flMngr.fs_wt*60:
         #print("DEBUG")
         print("Coping files")
@@ -26,3 +25,5 @@ while True:
         #print("DEBUG")
         print("Files copied")
         #print("DEBUG-ENDS")
+    else:
+        time.sleep(flMngr.fs_wt*60)

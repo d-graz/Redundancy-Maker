@@ -10,13 +10,17 @@ def copy(file_name, trg_dir, mrr_dir):
     #DEBUG ENDS
     if cloned_dir != "":
         cloned_dir = mrr_dir + cloned_dir
-        subprocess.run(["mkdir", "-p", cloned_dir], stdout=subprocess.PIPE, text=True)
+        if file_name[2] == False:
+            subprocess.run(["mkdir", "-p", cloned_dir], stdout=subprocess.PIPE, text=True)
     else:
         cloned_dir = mrr_dir
     print("directory cloned final :" + cloned_dir)
     file = file_name[0]+file_name[1]
     print("file :"+file)
-    subprocess.run(["cp", "-r", file, cloned_dir], stdout=subprocess.PIPE, text=True)
+    if file_name[2] == True:
+        subprocess.run(["rm", "-r", cloned_dir+file_name[1]], stdout=subprocess.PIPE, text=True)
+    else:
+        subprocess.run(["cp", "-r", file, cloned_dir], stdout=subprocess.PIPE, text=True)
     print("copy succeded")
 
 

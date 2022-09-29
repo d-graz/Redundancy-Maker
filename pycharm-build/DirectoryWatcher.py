@@ -21,9 +21,14 @@ class DirectoryWatcher:
             print("DEBUG-ENDS")
             cmd_raw_output = cmd_output.stdout
             cmd_raw_output = cmd_raw_output.split(" ")
+            if cmd_raw_output[1] == "DELETE":
+                removeFlag = True
+            else:
+                removeFlag = False
             cmd_raw_output.pop(1)
             cmd_raw_output[1] = cmd_raw_output[1].replace('\n', "")
             cmd_output = cmd_raw_output
+            cmd_output.append(removeFlag)
             self.lock.acquire()
             self.tmr = time.perf_counter()
             if cmd_output not in self.pending_files:
