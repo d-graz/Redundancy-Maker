@@ -12,6 +12,10 @@ class DirectoryWatcher:
         raw_cmd_output = subprocess.run(["diff", "-qr", self.target, self.mirror], stdout=subprocess.PIPE, text=True)
         cmd_output = raw_cmd_output.stdout.split("\n")
         cmd_output.pop(len(cmd_output)-1)
+        #DEBUG
+        if len(cmd_output) == 0:
+            print("Nessuna modifica al fs")
+        #DEBUG-ENDS
         for i in range(len(cmd_output)):
             cmd_output[i] = cmd_output[i].split(" ")
             cmd_output[i].pop(0)
