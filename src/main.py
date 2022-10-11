@@ -1,11 +1,12 @@
 from DirectoryWatcher import DirectoryWatcher
 from FileLoader import FileLoader
 from CpuWatcher import CpuWatcher
+from Logger import Logger
 import SyncManager as sync
 import threading
 import time
 
-print("Loading config file")
+logger = Logger()
 flMngr = FileLoader()
 print("Config loaded succesfully")
 dW = DirectoryWatcher(flMngr.trg_dir,flMngr.mrr_dir)
