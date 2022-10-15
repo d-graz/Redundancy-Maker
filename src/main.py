@@ -25,4 +25,6 @@ while True:
     sync.sync(dW.watch_diff(),flMngr.trg_dir,flMngr.mrr_dir)
     if logger.isEnabled():
         logger.log("Synchronization completed succesfully. Now rest for "+str(flMngr.fs_wt*2)+"m")
-    time.sleep(flMngr.fs_wt*60)
+    time.sleep(flMngr.fs_wt*60*2)
+
+# todo : aggiungere condizione che se inotifywait non ha visto nulla il tool non rilancia ancora un controllo completo nonstante non ci sia nulla di nuovo

@@ -17,15 +17,16 @@ Even though ZFS is one of the most (if not the most) powerfull filesystem to man
 Here *Redundacy-Maker* comes in, not eating up your ram and stressig up your CPU as much as you state in the config file( See config.Md in `src/` folder ). It only provides *mirroring* feature (this cuold change if requested) leaving your system for other process.
 
 ## Installation
-*Redundacy-Maker* is meant to work in a configured evirorment. Also it's meant to work as a system deamon.\
-If you want you can do these step by yourself. Just check that the requirment are met to ensure that the tool will work properly\
+*Redundacy-Maker* is meant to work in a configured evirorment as a system deamon.\
+If you want you can do these step by yourself. Just check that the requirment are met to ensure that the tool will work properly
 ### Configuring the envirorment
 **Package Requirment :**
 - **python** (tested on version 3.10)
+- **psutil** (python library)
 - **diff** (usually backed in every linux distribution)
-- **inotifywait**
+- **inotifywait** (inotify-tools package)
 
-**Filesystem Requirments**
+**Filesystem Requirments**\
 The tool needs **2 directory that lie on 2 different physical drives**. Also these directories must be **automatically mounted at boot**\
 To do so we suppose that the `target_directory`, which is the directory were your important file are situated, is in your `/home/$user/...` directory; so it's already mounted ad boot.\
 To create the `mirror_direcotry`, the direcotry in which files of `target_direcotry` will be copied to create the mirror, you should:
@@ -36,7 +37,10 @@ To create the `mirror_direcotry`, the direcotry in which files of `target_direco
 - edit `/etc/fstab` accordingly\
 Example: `UUID=$previos_UUID  /home/$user/.../mirror_direcotry   $filesystem_type $some flags`
 
-Now you should be able to mount at boot a drive in your `mirror_directory`
+Now you should be able to mount at boot a drive in your `mirror_directory` and eventually start *Redundancy-Maker* by simply
+```
+python main.py
+```
 
 ### Creating a systemd daemon
 The tool is designed to be lauched within the boot of the OS. There are several ways to achive so; one of them is to create a *Systemd service*.\
@@ -44,7 +48,7 @@ To create a custom `Redundancy-Maker.service`:
 - input steps
 
 ## Configuration
-Please check `src/config.Md` file.
+Please check `src/conf.Md` file.
 
 ## Future update
 Future incoming update:

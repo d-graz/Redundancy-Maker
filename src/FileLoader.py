@@ -3,12 +3,12 @@ import sys
 class FileLoader:
 
     def __init__(self,logger):
-        self.trg_dir = ""            ## target directory -> BUGGGG rimuovere / alla fine della stringa
-        self.mrr_dir = ""            ## mirror directory -> BUGGGG rimuovere / alla fine della stringa
-        self.cpu_load = 60           ## maximum accepted load on cpu
-        self.cpu_scan_time = 10      ## cpu probing time
-        self.cpu_rescan_interval = 15    ## time for recheck sistem
-        self.fs_wt = 15              ## filesistem watch time
+        self.trg_dir = ""
+        self.mrr_dir = ""
+        self.cpu_load = 35
+        self.cpu_scan_time = 5
+        self.cpu_rescan_interval = 10
+        self.fs_wt = 15
         self.h0 = 0
         self.h1 = 4
         config_file = open("config.txt")
