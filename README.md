@@ -54,6 +54,7 @@ Please check `src/README.Md` file.
 Future incoming update:
 - params for low load time interval where files can be safely synched
 
+
 Possible features (if heavly requested):
 - multiple `target_directory` whith multiple `mirror_direcotry` 
 
