@@ -18,9 +18,3 @@ class Logger:
     def update_header(self):
         t = time.gmtime()
         self.header = str(t.tm_mday)+"/"+str(t.tm_mon)+"/"+str(t.tm_year)+" "+str(t.tm_hour)+":"+str(t.tm_min)+":"+str(t.tm_sec)+" >> "
-
-    def setLoggerActivity(self,value):
-        self.enabled = value
-
-    def isEnabled(self):
-        return self.enabled

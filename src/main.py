@@ -15,16 +15,22 @@ thread1 = threading.Thread(target=dW.watch)
 thread2 = threading.Thread(target=cpuW.watch)
 thread1.start()
 thread2.start()
+last_changes = 0
 while True:
     while dW.getElapsedTime()<(flMngr.fs_wt*60) or cpuW.last_cpu_load>flMngr.cpu_load:
-        if logger.isEnabled():
+        if logger.enabled:
             logger.log("CPU usage is to higth or directory is currently in use. Going to sleep for "+str(flMngr.fs_wt)+"m")
         time.sleep(flMngr.fs_wt*60)
-    if logger.isEnabled():
-        logger.log("Starting synchronization")
-    sync.sync(dW.watch_diff(),flMngr.trg_dir,flMngr.mrr_dir)
-    if logger.isEnabled():
-        logger.log("Synchronization completed succesfully. Now rest for "+str(flMngr.fs_wt*2)+"m")
-    time.sleep(flMngr.fs_wt*60*2)
+    if last_changes != dW.last_work:
+        last_changes = dW.last_work
+        if logger.enabled:
+            logger.log("Starting synchronization")
+        sync.sync(dW.watch_diff(),flMngr.trg_dir,flMngr.mrr_dir)
+        if logger.enabled:
+            logger.log("Synchronization completed succesfully. Now rest for "+str(flMngr.fs_wt*2)+"m")
+        time.sleep(flMngr.fs_wt*60*2)
+    else:
+        if logger.enabled:
+            logger.log("No change to trg_dir has been found. Rest for "+str(flMngr.fs_wt)+"m")
+        time.sleep(flMngr.fs_wt*60)
 
-# todo : aggiungere condizione che se inotifywait non ha visto nulla il tool non rilancia ancora un controllo completo nonstante non ci sia nulla di nuovo

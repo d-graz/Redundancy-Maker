@@ -52,9 +52,9 @@ class FileLoader:
             elif line[0] == "logger":
                 value = line[1].upper()
                 if value == "YES" or "TRUE" or "ENABLED":
-                    logger.setLoggerActivity(True)
+                    logger.enabled = True
                 elif value == "NO" or "FALSE" or "DISABLED":
-                    logger.setLoggerActivity(False)
+                    logger.enabled = False
                 else:
                     logger.log("Warning: ignoring param "+line[1]+"\nReason : unknown param. Default behavior is logger disabled")
             else:
