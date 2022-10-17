@@ -1,3 +1,11 @@
 [Unit]
-Description=Redundancy-Maker service
+Description=Redundancy-Maker service (disks synch)
 After=multi-user.target
+
+[Service]
+ExecStart=<your directory where RedMaker is>/init.sh
+Type=exec
+Restart=no
+
+[Install]
+WantedBy=default.target
