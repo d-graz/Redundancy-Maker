@@ -59,3 +59,4 @@ Possible features (if heavly requested):
 - multiple `target_directory` whith multiple `mirror_direcotry` 
 
 ## Changelog
+- 17/10/22 first release of the tool
