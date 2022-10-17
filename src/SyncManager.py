@@ -13,7 +13,7 @@ def copy(file, trg_dir, mrr_dir):
     subprocess.run(["cp", "-r", file_name, working_dir], stdout=subprocess.PIPE, text=True)
 
 def remove(file):
-    subprocess.run(["rm", "-r", file[0]+'/'+file[1]], stdout=subprocess.PIPE, text=True)
+    subprocess.run(["rm", "-rf", file[0]+'/'+file[1]], stdout=subprocess.PIPE, text=True)
 
 def sync(not_synch_files,trg_dir,mrr_dir):
     remove_list = []

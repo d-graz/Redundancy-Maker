@@ -37,15 +37,15 @@ To create the `mirror_direcotry`, the direcotry in which files of `target_direco
 - edit `/etc/fstab` accordingly\
 Example: `UUID=$previos_UUID  /home/$user/.../mirror_direcotry   $filesystem_type $some flags`
 
-Now you should be able to mount at boot a drive in your `mirror_directory` and eventually start *Redundancy-Maker* by simply
+Now you should be able to mount at boot a drive in your `mirror_directory`.
+
+### Runnig the script
+You can now simply
 ```
 python main.py
 ```
-
-### Creating a systemd daemon
-The tool is designed to be lauched within the boot of the OS. There are several ways to achive so; one of them is to create a *Systemd service*.\
-To create a custom `Redundancy-Maker.service`:
-- input steps
+after appropriate changes have been made to `config.txt` file.\
+Hoever it's recommended to create a systemd daemon to automatically start *Redundancy-Maker* at system boot. To do read `service/README.md` file.  
 
 ## Configuration
 Please check `src/README.Md` file.
