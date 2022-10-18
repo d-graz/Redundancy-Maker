@@ -6,6 +6,7 @@ import SyncManager as sync
 import threading
 import time
 
+# todo : aggiungere stringa in ingresso a Logger
 logger = Logger()
 flMngr = FileLoader(logger)
 logger.log("Config loaded succesfully")

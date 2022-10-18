@@ -3,9 +3,10 @@ Description=Redundancy-Maker service (disks synch)
 After=multi-user.target
 
 [Service]
-ExecStart=<your directory where RedMaker is>/init.sh
+ExecStart=/usr/bin/python3 <your directory where RedMaker is>/main.py
 Type=exec
 Restart=no
+User=<YourUser>
 
 [Install]
 WantedBy=default.target
