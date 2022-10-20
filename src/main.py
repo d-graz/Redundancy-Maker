@@ -5,9 +5,15 @@ from Logger import Logger
 import SyncManager as sync
 import threading
 import time
+import sys
 
-# todo : aggiungere stringa in ingresso a Logger
-logger = Logger()
+if len(sys.argv) != 2:
+    print("Error : no direcotry for logfile was found.\nExiting...\n")
+    sys.exit()
+if sys.argv[1] == "-no--dir":
+    logger = Logger("./")
+else:    
+    logger = Logger(sys.argv[1])
 flMngr = FileLoader(logger)
 logger.log("Config loaded succesfully")
 dW = DirectoryWatcher(flMngr.trg_dir,flMngr.mrr_dir)
