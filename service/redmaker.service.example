@@ -1,0 +1,12 @@
+[Unit]
+Description=Redundancy-Maker service (disks synch)
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/davide/programs/Redundancy-Maker/main.py /home/davide/programs/Redundancy-Maker 
+Type=exec
+Restart=no
+User=davide
+
+[Install]
+WantedBy=default.target

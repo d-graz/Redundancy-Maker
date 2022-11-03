@@ -42,7 +42,7 @@ Now you should be able to mount at boot a drive in your `mirror_directory`.
 ### Runnig the script
 You can now simply
 ```
-python main.py
+python main.py --no-dir
 ```
 after appropriate changes have been made to `config.txt` file.\
 Hoever it's recommended to create a systemd daemon to automatically start *Redundancy-Maker* at system boot. To do read `service/README.md` file.  
@@ -59,4 +59,4 @@ Possible features (if heavly requested):
 - multiple `target_directory` whith multiple `mirror_direcotry` 
 
 ## Changelog
-- 17/10/22 first release of the tool
+

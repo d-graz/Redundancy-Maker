@@ -1,0 +1,5 @@
+target_directory: <some/dir>
+mirror_directory: <some/other/dir>
+cpu_scan_time: 1
+cpu_rescan_interval: 1
+filesystem_watch_timeout: 1
