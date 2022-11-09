@@ -10,3 +10,4 @@ Redundancy-Maker is configurable in order to best suit your needs/your hardware 
 |`cpu_rescan_interval`|time expressed in *minutes* between two different cpu scan|no|10|"  "  "|
 |`filesystem_watch_timeout`|minimum time, expressed in *minutes*, between two different scans of `target_dir`|no|15|increasing this value can reduce overall load of your cpu but syncs occurs less often. Integer required.|
 |`logger`|set if output shuold be logged in file `rm_log.txt`|no|False|advised to be enable on first lauch of the tool(if works corrctly can be disabled). Required in case of bug report|
+|`ignore`|set directory that must be skipped while synching|no|-|Can be specified multiple times for multiple direcotiries|

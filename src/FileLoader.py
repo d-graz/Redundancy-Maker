@@ -9,6 +9,7 @@ class FileLoader:
         self.cpu_scan_time = 5
         self.cpu_rescan_interval = 10
         self.fs_wt = 15
+        self.exceptions = []
         self.h0 = 0
         self.h1 = 4
         config_file = open("config.txt")
@@ -31,6 +32,13 @@ class FileLoader:
                 if(self.mrr_dir[last_string_index] == '/'):
                     self.mrr_dir = self.mrr_dir.replace(self.mrr_dir[last_string_index:],"")
                 logger.log("Correctly loaded mirror direcotory")
+            elif line[0] == "ignore":
+                string = line[1].replace("\n",'')
+                last_string_index = len(string) -1
+                if(string[last_string_index] == '/'):
+                    string = string.replace(string[last_string_index:],"")
+                self.exceptions.append(string)
+                logger.log("Correctly added exception to directory "+string)
             elif line[0] == "cpu_load_threshold":
                 self.cpu_load = int(line[1])
                 logger.log("Correctly loaded cpu load threshold")

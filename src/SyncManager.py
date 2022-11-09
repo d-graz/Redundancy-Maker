@@ -15,13 +15,17 @@ def copy(file, trg_dir, mrr_dir):
 def remove(file):
     subprocess.run(["rm", "-rf", file[0]+'/'+file[1]], stdout=subprocess.PIPE, text=True)
 
-def sync(not_synch_files,trg_dir,mrr_dir):
+def sync(not_synch_files,trg_dir,mrr_dir,exceptions):
     remove_list = []
     sync_list = []
     for file in not_synch_files:
-        if(trg_dir in file[0]):
+        todo = True
+        for direcotory in exception:
+            if direcotory in file[0]:
+                todo = False
+        if trg_dir in file[0] and todo == True:
             sync_list.append(file)
-        else:
+        elif todo == True:
             remove_list.append(file)
     for file in sync_list:
         copy(file, trg_dir, mrr_dir)

@@ -28,6 +28,7 @@ class DirectoryWatcher:
         while True:
             self.last_work = time.perf_counter()
             subprocess.run(["inotifywait", "-r", "-e", "modify,move,create,delete", "-q", self.target], stdout=subprocess.PIPE, text=True)
+            #todo aggiungere eccezione se inotifywait rileva una modifica che si trova nella cartella exception
 
     def getElapsedTime(self):
         return time.perf_counter()-self.last_work
