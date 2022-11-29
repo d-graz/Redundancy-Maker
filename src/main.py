@@ -12,9 +12,10 @@ if len(sys.argv) != 2:
     sys.exit()
 if sys.argv[1] == "-no--dir":
     logger = Logger("./")
+    flMngr = FileLoader(logger)
 else:    
     logger = Logger(sys.argv[1])
-flMngr = FileLoader(logger)
+    flMngr = FileLoader(logger,sys.argv[1])
 logger.log("Config loaded succesfully")
 dW = DirectoryWatcher(flMngr.trg_dir,flMngr.mrr_dir)
 cpuW = CpuWatcher(flMngr.cpu_rescan_interval, flMngr.cpu_scan_time)

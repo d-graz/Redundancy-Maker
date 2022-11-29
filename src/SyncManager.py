@@ -20,7 +20,7 @@ def sync(not_synch_files,trg_dir,mrr_dir,exceptions):
     sync_list = []
     for file in not_synch_files:
         todo = True
-        for direcotory in exception:
+        for direcotory in exceptions:
             if direcotory in file[0]:
                 todo = False
         if trg_dir in file[0] and todo == True:

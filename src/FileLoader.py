@@ -2,7 +2,7 @@ import sys
 
 class FileLoader:
 
-    def __init__(self,logger):
+    def __init__(self,logger,path=""):
         self.trg_dir = ""
         self.mrr_dir = ""
         self.cpu_load = 35
@@ -12,7 +12,13 @@ class FileLoader:
         self.exceptions = []
         self.h0 = 0
         self.h1 = 4
-        config_file = open("config.txt")
+        if path == "":
+            config_file = open("config.txt")
+        else:
+            if path[len(path)-1] == "/":
+                config_file = open(path+"config.txt")
+            else:
+                config_file = open(path+"/config.txt")
         lines = config_file.readlines()
         processed_lines = []
         for line in lines:
