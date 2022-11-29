@@ -33,7 +33,7 @@ while True:
         last_changes = dW.last_work
         if logger.enabled:
             logger.log("Starting synchronization")
-        sync.sync(dW.watch_diff(),flMngr.trg_dir,flMngr.mrr_dir,flMngr.exceptions)
+        sync.sync(dW.watch_diff(),flMngr.trg_dir,flMngr.mrr_dir)
         if logger.enabled:
             logger.log("Synchronization completed succesfully. Now rest for "+str(flMngr.fs_wt*2)+"m")
         time.sleep(flMngr.fs_wt*60*2)
