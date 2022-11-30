@@ -29,13 +29,13 @@ If you want you can do these step by yourself. Just check that the requirment ar
 **Filesystem Requirments**\
 The tool needs **2 directory that lie on 2 different physical drives**. Also these directories must be **automatically mounted at boot**\
 To do so we suppose that the `target_directory`, which is the directory were your important file are situated, is in your `/home/$user/...` directory; so it's already mounted ad boot.\
-To create the `mirror_direcotry`, the direcotry in which files of `target_direcotry` will be copied to create the mirror, you should:
-- create a directory $\rightarrow$ `mkdir /home/$user/.../mirror_direcotry`\
-**Warning : this direcotry must be empty; any file present in this direcotry will be removed** when synching whith the `target_direcotry`
+To create the `mirror_directory`, the directory in which files of `target_directory` will be copied to create the mirror, you should:
+- create a directory $\rightarrow$ `mkdir /home/$user/.../mirror_directory`\
+**Warning : this directory must be empty; any file present in this directory will be removed** when synching whith the `target_directory`
 - format your drive if not formatted yet $\rightarrow$ you could use `gparted` (graphical)
 - `sudo blkid` $\rightarrow$ grab your disk UUID
 - edit `/etc/fstab` accordingly\
-Example: `UUID=$previos_UUID  /home/$user/.../mirror_direcotry   $filesystem_type $some flags`
+Example: `UUID=$previos_UUID  /home/$user/.../mirror_directory   $filesystem_type $some flags`
 
 Now you should be able to mount at boot a drive in your `mirror_directory`.
 
@@ -53,10 +53,12 @@ Please check `src/README.Md` file.
 ## Future update
 Future incoming update:
 - params for low load time interval where files can be safely synched
+- implementing using cpulimit
 
 
 Possible features (if heavly requested):
-- multiple `target_directory` whith multiple `mirror_direcotry` 
+- multiple `target_directory` whith multiple `mirror_directory` 
+- install.sh
 
 ## Changelog
-
+- 27/11/2022 >> Started testing

@@ -1,0 +1,4 @@
+target_directory: <some/dir>
+mirror_directory: <some/other/dir>
+cpu_rescan_interval: 5
+cpu_load_threshold: 50

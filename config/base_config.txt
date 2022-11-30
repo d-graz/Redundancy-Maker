@@ -1,0 +1,2 @@
+target_directory: <some/dir>
+mirror_directory: <some/other/dir>
