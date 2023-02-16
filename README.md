@@ -5,6 +5,14 @@ Do you need your data to be easily accessible?\
 If the answers to one of the previous questions is yes and you want to find a "substitute" to the proprietary ZFS file-system, then maybe this tool is for you.
 *Redundacy-Maker* is a **very** simple, flexible and lightweight tool that aims to replicate what is called *disk mirroring* or *RAID-1* on a "standard" filesystem, like *ext4*, so that your data is always accesible.
 
+---
+
+## Warning
+You should **always** have an off-site backup of your important data in order to prevent natural disasters or hardware/software failure.\
+**I will not take any responsibility for any data-loss caused by malfunction/not appropriate use of the softare**.
+
+---
+
 ## Table of content
 1. [Introduction](#introduction)
 2. [Installation](#installation)
@@ -62,3 +70,4 @@ Possible features (if heavly requested):
 
 ## Changelog
 - 27/11/2022 >> Started testing
+- 16/02/2023 >> First release
